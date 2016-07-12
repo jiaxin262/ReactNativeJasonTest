@@ -15,10 +15,7 @@ import {
   Navigator,
 } from 'react-native';
 import FirstPageComponent from './FirstPageComponent';
-
-var MOCKED_MOVIES_DATA = [
-  {title: 'title', year: '2016', posters: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}},
-];
+import MainPage from './src/MainPage';
 
 var REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
@@ -53,14 +50,11 @@ class JasonRnProject extends Component {
   }
 
   render() {
-    let defaultName = 'FirstPageComponent';
-    let defaultComponent = FirstPageComponent;
+    let defaultName = 'MianPage';
+    let defaultComponent = MainPage;
     return (
         <Navigator
           initialRoute = {{name: defaultName, component: defaultComponent}}
-          configureScene = {(route)=>{
-            return Navigator.SceneConfigs.verticalDownSwipeJump;
-          }}
           renderScene = {(route, navigator) => {
             let Component = route.component;
             return <Component {...route.param} navigator={navigator}/>
@@ -68,7 +62,6 @@ class JasonRnProject extends Component {
         />
     );
 
-    //var movie = MOCKED_MOVIES_DATA[0];
     if (!this.state.loaded) {
       return this.renderLoadingView();
     }
@@ -106,35 +99,9 @@ class JasonRnProject extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F0FFFF',
-  },
-  rightContainer: {
-    flex: 1,
-    height: 120,
-    backgroundColor: '#AEEEEE',
-    marginRight: 10,
-  },
   listView: {
     paddingTop: 20,
     backgroundColor: '#F0FFF0',
-  },
-  thumbnail: {
-    width: 90, 
-    height: 120,
-    marginLeft: 10,
-  },
-  title: {
-    fontSize: 20,
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  year: {
-    textAlign: "center",
   },
 });
 
