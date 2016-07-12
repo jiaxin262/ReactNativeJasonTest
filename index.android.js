@@ -42,7 +42,7 @@ class JasonRnProject extends Component {
       .then((responseData) => {
         this.setState({
           movies: responseData.movies,
-          dataSource: this.state.dataSource.cloneWithRows(responseData.movies),
+          dataSource: this.state.dataSource.cloneWithRows(responseData.dataSource),
           loaded: true,
         });
       })
