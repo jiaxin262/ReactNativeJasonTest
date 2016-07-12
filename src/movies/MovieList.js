@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 
 var MOCKED_MOVIEW_DATA = [
-    {title:'title', year:1990, poster: {thumbnail:'http://i.imgur.com/UePbdph.jpg'}}
+    {title:'title', year:1990, posters: {thumbnail:'http://i.imgur.com/UePbdph.jpg'}}
 ];
 var REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
@@ -22,12 +22,14 @@ export default class MoviewList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          movie: null,
-          loaded: false,
-          dataSource: new ListView.DataSource({
-              rowHasChanged: (row1, row2) => row1 !== row2
-          })
+            movies: null,  //这里放自定义的state变量及初始值
+            loaded: false,
+            dataSource: new ListView.DataSource({
+                rowHasChanged: (row1, row2) => row1 !== row2,
+            }),
         };
+        // 在ES6中，如果在自定义的函数里使用了this关键字，则需要对其进行“绑定”操作，否则this的指向不对
+        // 像下面这行代码一样，在constructor中使用bind是其中一种做法（还有一些其他做法，如使用箭头函数等）
         this.fetchDatas = this.fetchData.bind(this);
     }
 
@@ -40,8 +42,14 @@ export default class MoviewList extends Component {
         if (!this.state.loaded) {
             return this.renderLoadingView();
         }
-        var movie = this.state.movies[0];
-        return this.renderMovie(movie);
+        //var movie = this.state.movies[0];
+        return (
+            <ListView
+                dataSource={this.state.dataSource}
+                renderRow={this.renderMovie}
+                style={styles.listView}
+            />
+        );
     }
 
     fetchData() {
@@ -49,9 +57,9 @@ export default class MoviewList extends Component {
             .then((response) => response.json())
             .then((responseData) => {
                 this.setState({
-                    loaded: true,
                     movies: responseData.movies,
-                    dataSource: this.state.dataSource.cloneWithRows(responseData.dataSource)
+                    dataSource: this.state.dataSource.cloneWithRows(responseData.movies),
+                    loaded: true,
                 });
             })
             .done();
@@ -68,7 +76,7 @@ export default class MoviewList extends Component {
     renderMovie(movie) {
         return (
             <View style={styles.container}>
-                <Image source={{uri: movie.poster.thumbnail}}
+                <Image source={{uri: movie.posters.thumbnail}}
                  style={styles.thumbnail}/>
                 <View style={styles.rightContainer}>
                     <Text style={styles.title}>{movie.title}</Text>
@@ -102,7 +110,8 @@ const styles = StyleSheet.create({
         textAlign: "center"
     },
     listView: {
-
+        paddingTop: 20,
+        backgroundColor: '#F0FFF0'
     },
     thumbnail: {
         width: 90,
