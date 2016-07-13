@@ -7,12 +7,7 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ListView,
-  Navigator,
+  Navigator
 } from 'react-native';
 import MainPage from './src/MainPage';
 

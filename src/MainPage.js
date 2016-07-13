@@ -14,9 +14,9 @@ import MovieList from './movies/MovieList';
 export default class MainPage extends Component {
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <TouchableOpacity onPress={this.openMovieList.bind(this)}>
-                    <Text>go to movieList</Text>
+                    <Text style={styles.item}>go to movieList</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -30,3 +30,15 @@ export default class MainPage extends Component {
     }
 
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    item: {
+        fontSize: 30,
+        textAlign: 'center'
+    }
+});
