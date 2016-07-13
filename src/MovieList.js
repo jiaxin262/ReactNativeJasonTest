@@ -9,7 +9,6 @@ import {
     TouchableOpacity,
     Image,
     ListView,
-    Navigator,
     StyleSheet
 } from 'react-native';
 
@@ -32,7 +31,7 @@ export default class MoviewList extends Component {
         // 像下面这行代码一样，在constructor中使用bind是其中一种做法（还有一些其他做法，如使用箭头函数等）
         this.fetchDatas = this.fetchData.bind(this);
     }
-
+    
     componentDidMount() {
         this.fetchData();
     }

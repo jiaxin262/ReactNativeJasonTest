@@ -9,7 +9,8 @@ import {
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
-import MovieList from './movies/MovieList';
+import MovieList from './MovieList';
+import NavigationParamTest from './NavigationParamTest'
 
 export default class MainPage extends Component {
     render() {
@@ -17,6 +18,9 @@ export default class MainPage extends Component {
             <View style={styles.container}>
                 <TouchableOpacity onPress={this.openMovieList.bind(this)}>
                     <Text style={styles.item}>go to movieList</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={this.navigationParam.bind(this)}>
+                    <Text style={styles.item}>navigationParam</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -27,6 +31,13 @@ export default class MainPage extends Component {
             title: 'MovieList',
             component: MovieList,
             type: 'Bottom'
+        });
+    }
+
+    navigationParam() {
+        this.props.navigator.push({
+           title: 'navigationParam',
+           component:  NavigationParamTest
         });
     }
 
