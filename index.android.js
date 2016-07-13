@@ -11,7 +11,8 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 import MainPage from './src/MainPage';
 
@@ -23,9 +24,10 @@ class JasonRnProject extends Component {
         <Navigator
           initialRoute = {{name: defaultName, component: defaultComponent}}
           configureScene = {this.configureScene}
+          sceneStyle={{paddingTop: (Platform.OS === 'android' ? 66 : 74)}}
           renderScene = {(route, navigator) => {
             let Component = route.component;
-            return <Component {...route.param} navigator={navigator}/>
+            return <Component {...route.params} navigator={navigator}/>
           }}
           navigationBar = {this.getNavigationBar()}
         />

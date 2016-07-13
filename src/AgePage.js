@@ -20,7 +20,7 @@ export default class AgePage extends Component {
             <View style={styles.container}>
                 <Text>Welcome to AgePage! {this.props.name}</Text>
                 <TextInput
-                    onChangeText={age => this.props.updateAge(age) }
+                    onChangeText={age => this.props.changeMyAge(age) }
                     placeholder={'Enter your age:'}
                     style={styles.editText} />
                 <TouchableOpacity onPress={this._back.bind(this)}>

@@ -29,6 +29,7 @@ export default class NavigationParamTest extends Component {
                     onChangeText={name => this.setState({name})}
                     placeHolder={'Enter your name'}
                     style={styles.editText}/>
+                <Text>name:{this.state.name ? this.state.name : 'unknown'}</Text>
                 <Text>age:{this.state.age ? this.state.age : 'unknown'}</Text>
                 <TouchableOpacity onPress={this.openAgePage.bind(this)}>
                     <Text style={styles.text}>Update age</Text>
@@ -39,12 +40,14 @@ export default class NavigationParamTest extends Component {
 
     openAgePage() {
         this.props.navigator.push({
-           name: 'AgePage',
+           title: 'AgePage',
            component: AgePage,
            params: {
                name: this.state.name,
                age: this.state.age,
-               updateAge: age => this.setState({age}) 
+               changeMyAge: (age) => {
+                   this.setState({ age })
+               }
            }
         });
     }
