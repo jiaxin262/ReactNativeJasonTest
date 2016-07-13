@@ -25,7 +25,8 @@ export default class MainPage extends Component {
     openMovieList() {
         this.props.navigator.push({
             title: 'MovieList',
-            component: MovieList
+            component: MovieList,
+            type: 'Bottom'
         });
     }
 
