@@ -76,7 +76,7 @@ class JasonRnProject extends Component {
             </View>
         )
       }
-    }
+    };
 
     return (
         <Navigator.NavigationBar
