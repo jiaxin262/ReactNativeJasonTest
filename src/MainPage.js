@@ -6,12 +6,17 @@ import React, {Component} from 'react';
 import {
     View,
     Text,
-    TouchableOpacity,
+    TouchableHighlight,
     StyleSheet,
-    DeviceEventEmitter
+    DeviceEventEmitter,
+    Image,
+    ScrollView
 } from 'react-native';
+import Util from './utils';
 import MovieList from './MovieList';
-import NavigationParamTest from './NavigationParamTest'
+import Icon from 'react-native-vector-icons/Ionicons';
+import IconFA from 'react-native-vector-icons/FontAwesome';
+import NavigationParamTest from './NavigationParamTest';
 
 export default class MainPage extends Component {
     constructor(props) {
@@ -20,7 +25,7 @@ export default class MainPage extends Component {
             days:[{
                 key: 0,
                 title: "A stopwatch",
-                component: Day1,
+                component: MovieList,
                 isFA: false,
                 icon: "ios-stopwatch",
                 size: 48,
@@ -29,9 +34,9 @@ export default class MainPage extends Component {
             },{
                 key:1,
                 title:"A weather app",
-                component: Day2,
+                component: NavigationParamTest,
                 isFA: false,
-                icon: "ios-partlysunny",
+                icon: "ios-sunny",
                 size:60,
                 color:"#90bdc1",
                 hideNav: true
@@ -44,7 +49,7 @@ export default class MainPage extends Component {
             'quickActionShortcut', (data) => {
                 switch (data.title) {
                     case "Day5":
-                        this._jumpToDay(4);
+                        this.jumpToDay(4);
                         break;
                 }
             });
@@ -54,25 +59,29 @@ export default class MainPage extends Component {
         var onThis = this;
         var boxs = this.state.days.map(function (elem, index) {
             return(
-                <TouchableOpacity onPress={onThis.jumpToDay.(index)}>
-
-                </TouchableOpacity>
+                <TouchableHighlight key={elem.key} style={[styles.touchBox, styles.touchBox1]}
+                                    underlayColor="#eee"  onPress={onThis.jumpToDay(index)}>
+                    <View style={styles.boxContainer}>
+                        <Text style={styles.boxText}>Day{index+1}</Text>
+                        {elem.isFA ? <IconFA size={elem.size} name={elem.icon} style={[styles.boxIcon,{color:elem.color}]}></IconFA> :
+                            <Icon size={elem.size} name={elem.icon} style={[styles.boxIcon,{color:elem.color}]}></Icon>}
+                    </View>
+                </TouchableHighlight>
             );
         });
-        return (
-            <View style={styles.container}>
-                <TouchableOpacity onPress={this.openMovieList.bind(this)}>
-                    <Text style={styles.item}>go to movieList</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={this.navigationParam.bind(this)}>
-                    <Text style={styles.item}>navigationParam</Text>
-                </TouchableOpacity>
-            </View>
+        return(
+            <ScrollView>
+                <View style={styles.touchBoxContainer}>
+                    {boxs}
+                </View>
+            </ScrollView>
         );
     }
 
     jumpToDay(index) {
-
+        // this.props.navigator.replace({
+        //     id: `day${index+1}`,
+        // });
     }
 
     openMovieList() {
@@ -101,5 +110,70 @@ const styles = StyleSheet.create({
     item: {
         fontSize: 30,
         textAlign: 'center'
+    },
+    touchBox:{
+        width: Util.size.width/3-0.34,
+        height:Util.size.width/3,
+        backgroundColor:"#fff",
+    },
+    touchBoxContainer:{
+        flexDirection: "row",
+        flexWrap:"wrap",
+        width: Util.size.width,
+        borderTopWidth: Util.pixel,
+        borderTopColor:"#ccc",
+        borderLeftWidth: Util.pixel,
+        borderLeftColor:"#ccc",
+        borderRightWidth: Util.pixel,
+        borderRightColor:"#ccc",
+    },
+    touchBox1:{
+        borderBottomWidth: Util.pixel,
+        borderBottomColor:"#ccc",
+        borderRightWidth: Util.pixel,
+        borderRightColor:"#ccc",
+    },
+    touchBox2:{
+        borderBottomWidth: Util.pixel,
+        borderBottomColor:"#ccc",
+    },
+    boxContainer:{
+        alignItems:"center",
+        justifyContent:"center",
+        width: Util.size.width/3,
+        height:Util.size.width/3,
+    },
+    boxIcon:{
+        position:"relative",
+        top:-10
+    },
+    boxText:{
+        position:"absolute",
+        bottom:15,
+        width:Util.size.width/3,
+        textAlign:"center",
+        left: 0,
+        backgroundColor:"transparent"
+    },
+    slide: {
+        flex: 1,
+        height: 150,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    slideText:{
+        position:"absolute",
+        bottom: 0,
+        paddingTop:5,
+        paddingBottom:5,
+        backgroundColor:"rgba(255,255,255,0.5)",
+        width: Util.size.width,
+        textAlign:"center",
+        fontSize: 12
+    },
+    image:{
+        width: Util.size.width,
+        flex: 1,
+        alignSelf: 'stretch',
     }
 });
