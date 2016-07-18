@@ -24,7 +24,7 @@ class JasonRnProject extends Component {
         <Navigator
           initialRoute = {{name: defaultName, component: defaultComponent}}
           configureScene = {this.configureScene}
-          sceneStyle={{paddingTop: (Platform.OS === 'android' ? 66 : 74)}}
+          sceneStyle={{paddingTop: (Platform.OS === 'android' ? 57 : 74)}}
           renderScene = {(route, navigator) => {
             let Component = route.component;
             return <Component {...route.params} navigator={navigator}/>
@@ -102,7 +102,8 @@ const styles = StyleSheet.create({
   title: {
     flex: 1, 
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width:200,
   },
   button: {
     flex: 1, 

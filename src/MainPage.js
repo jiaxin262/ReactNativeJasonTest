@@ -18,6 +18,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import IconFA from 'react-native-vector-icons/FontAwesome';
 import NavigationParamTest from './NavigationParamTest';
 
+var COLORS = [
+    '#F8F8FF','#BBFFFF','#F0FFF0','#90EE90','#B0E0E6','#EEEED1','#F5DEB3','#FFAEB9','#87CEFF','#AB82FF'
+];
+
 export default class MainPage extends Component {
     constructor(props) {
         super(props);
@@ -30,6 +34,7 @@ export default class MainPage extends Component {
                 icon: "ios-stopwatch",
                 size: 48,
                 color: "#ff856c",
+                bgColor: COLORS[0],
                 hideNav: false
             },{
                 key:1,
@@ -39,6 +44,87 @@ export default class MainPage extends Component {
                 icon: "ios-sunny",
                 size:60,
                 color:"#90bdc1",
+                bgColor: COLORS[1],
+                hideNav: true
+            },{
+                key: 2,
+                title: "A stopwatch",
+                component: MovieList,
+                isFA: false,
+                icon: "ios-stopwatch",
+                size: 48,
+                color: "#ff856c",
+                bgColor: COLORS[2],
+                hideNav: false
+            },{
+                key:3,
+                title:"A weather app",
+                component: NavigationParamTest,
+                isFA: false,
+                icon: "ios-sunny",
+                size:60,
+                color:"#90bdc1",
+                bgColor: COLORS[3],
+                hideNav: true
+            },{
+                key: 4,
+                title: "A stopwatch",
+                component: MovieList,
+                isFA: false,
+                icon: "ios-stopwatch",
+                size: 48,
+                color: "#ff856c",
+                bgColor: COLORS[4],
+                hideNav: false
+            },{
+                key:5,
+                title:"A weather app",
+                component: NavigationParamTest,
+                isFA: false,
+                icon: "ios-sunny",
+                size:60,
+                color:"#90bdc1",
+                bgColor: COLORS[5],
+                hideNav: true
+            },{
+                key: 6,
+                title: "A stopwatch",
+                component: MovieList,
+                isFA: false,
+                icon: "ios-stopwatch",
+                size: 48,
+                color: "#ff856c",
+                bgColor: COLORS[6],
+                hideNav: false
+            },{
+                key:7,
+                title:"A weather app",
+                component: NavigationParamTest,
+                isFA: false,
+                icon: "ios-sunny",
+                size:60,
+                color:"#90bdc1",
+                bgColor: COLORS[7],
+                hideNav: true
+            },{
+                key: 8,
+                title: "A stopwatch",
+                component: MovieList,
+                isFA: false,
+                icon: "ios-stopwatch",
+                size: 48,
+                color: "#ff856c",
+                bgColor: COLORS[8],
+                hideNav: false
+            },{
+                key:9,
+                title:"A weather app",
+                component: NavigationParamTest,
+                isFA: false,
+                icon: "ios-sunny",
+                size:60,
+                color:"#90bdc1",
+                bgColor: COLORS[9],
                 hideNav: true
             }]
         }
@@ -59,12 +145,12 @@ export default class MainPage extends Component {
         var onThis = this;
         var boxs = this.state.days.map(function (elem, index) {
             return(
-                <TouchableHighlight key={elem.key} style={[styles.touchBox, styles.touchBox1]}
+                <TouchableHighlight key={elem.key} style={[styles.touchBox, {backgroundColor:elem.bgColor}]}
                                     underlayColor="#eee"  onPress={onThis.jumpToDay(index)}>
                     <View style={styles.boxContainer}>
                         <Text style={styles.boxText}>Day{index+1}</Text>
-                        {elem.isFA ? <IconFA size={elem.size} name={elem.icon} style={[styles.boxIcon,{color:elem.color}]}></IconFA> :
-                            <Icon size={elem.size} name={elem.icon} style={[styles.boxIcon,{color:elem.color}]}></Icon>}
+                        {elem.isFA ? <IconFA size={elem.size} name={elem.icon} style={[styles.boxIcon,{color:elem.color}]}> </IconFA> :
+                            <Icon size={elem.size} name={elem.icon} style={[styles.boxIcon,{color:elem.color}]}> </Icon>}
                     </View>
                 </TouchableHighlight>
             );
@@ -112,20 +198,16 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     touchBox:{
-        width: Util.size.width/3-0.34,
-        height:Util.size.width/3,
+        width: Util.size.width/2-0.34,
+        height:Util.size.width/2,
         backgroundColor:"#fff",
     },
     touchBoxContainer:{
+        flex: 1,
+        justifyContent: 'center',
         flexDirection: "row",
         flexWrap:"wrap",
         width: Util.size.width,
-        borderTopWidth: Util.pixel,
-        borderTopColor:"#ccc",
-        borderLeftWidth: Util.pixel,
-        borderLeftColor:"#ccc",
-        borderRightWidth: Util.pixel,
-        borderRightColor:"#ccc",
     },
     touchBox1:{
         borderBottomWidth: Util.pixel,
@@ -140,8 +222,6 @@ const styles = StyleSheet.create({
     boxContainer:{
         alignItems:"center",
         justifyContent:"center",
-        width: Util.size.width/3,
-        height:Util.size.width/3,
     },
     boxIcon:{
         position:"relative",
