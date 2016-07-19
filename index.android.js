@@ -15,6 +15,7 @@ import {
   Platform
 } from 'react-native';
 import MainPage from './src/MainPage';
+import Util from './src/utils';
 
 class JasonRnProject extends Component {
   render(){
@@ -100,10 +101,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8
   },
   title: {
+    position:'relative',
+    left: Util.size.width/2-110,
     flex: 1, 
     alignItems: 'center',
-    justifyContent: 'center',
-    width:200,
+    justifyContent: 'center'
   },
   button: {
     flex: 1, 
