@@ -15,7 +15,7 @@ import {
   Platform
 } from 'react-native';
 import MainPage from './src/MainPage';
-import Util from './src/utils';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 class JasonRnProject extends Component {
   render(){
@@ -54,7 +54,11 @@ class JasonRnProject extends Component {
               </TouchableOpacity>
           );
         } else {
-          return null;
+          return (
+              <View style={styles.button}>
+                <Icon size={30} name={'ios-beer'} color={'#FFFFFF'}></Icon>
+              </View>
+          );
         }
       },
 
@@ -101,9 +105,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8
   },
   title: {
-    position:'relative',
-    left: Util.size.width/2-110,
-    flex: 1, 
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
   },

@@ -119,16 +119,16 @@ export default class MainPage extends Component {
         }
     }
 
-    componentWillMount() {
-        DeviceEventEmitter.addListener(
-            'quickActionShortcut', (data) => {
-                switch (data.title) {
-                    case "Day5":
-                        this.jumpToDay(4);
-                        break;
-                }
-            });
-    }
+    // componentWillMount() {
+    //     DeviceEventEmitter.addListener(
+    //         'quickActionShortcut', (data) => {
+    //             switch (data.title) {
+    //                 case "Day5":
+    //                     this.jumpToDay(4);
+    //                     break;
+    //             }
+    //         });
+    // }
 
     render() {
         var onThis = this;
@@ -156,21 +156,6 @@ export default class MainPage extends Component {
         this.props.navigator.push({
             title: elem.title,
             component: elem.component
-        });
-    }
-
-    openMovieList() {
-        this.props.navigator.push({
-            title: 'MovieList',
-            component: MovieList,
-            type: 'Bottom'
-        });
-    }
-
-    navigationParam() {
-        this.props.navigator.push({
-           title: 'navigationParam',
-           component:  NavigationParamTest
         });
     }
 
