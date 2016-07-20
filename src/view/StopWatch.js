@@ -17,8 +17,24 @@ export default class StopWatch extends Component {
     constructor() {
         super();
         this.state={
-            sectionTime: '00:00.00',
-            totalTime: '00:00.00'
+            stopWatch: false,
+            resetWatch: true,
+            initialTime: 0,
+            currentTime: 0,
+            recordTime: 0,
+            timeAccumulation:0,
+            totalTime: "00:00.00",
+            sectionTime: "00:00.00",
+            recordCounter: 0,
+            record:[
+                {title:"",time:""},
+                {title:"",time:""},
+                {title:"",time:""},
+                {title:"",time:""},
+                {title:"",time:""},
+                {title:"",time:""},
+                {title:"",time:""}
+            ]
         };
     }
 
@@ -28,24 +44,93 @@ export default class StopWatch extends Component {
                 <WatchHead sectionTime={this.state.sectionTime} totalTime={this.state.totalTime}></WatchHead>
                 <WatchControl startWatch={()=>this.startWatch()} stopWatch={()=>this.stopWatch()}
                     addRecord={()=>this.addRecord()} clearRecord={()=>this.clearRecord()}></WatchControl>
+                <WatchRecord record={this.state.record}></WatchRecord>
             </View>
         );
     }
 
     startWatch() {
-
+        if (this.state.resetWatch) {
+            this.setState({
+                stopWatch: false,
+                resetWatch: false,
+                timeAccumulation:0,
+                initialTime: (new Date()).getTime()
+            })
+        }else{
+            this.setState({
+                stopWatch: false,
+                initialTime: (new Date()).getTime()
+            })
+        }
+        let milSecond, second, minute, countingTime,
+            secmilSecond, secsecond, secminute, seccountingTime;
+        let interval = setInterval(() => {
+            this.setState({
+                currentTime: (new Date()).getTime()
+            });
+            countingTime = this.state.currentTime - this.state.initialTime;
+            minute = Math.floor(countingTime/1000/60);
+            second = Math.floor((countingTime - minute*6000)/1000);
+            milSecond = Math.floor(countingTime%1000/10);
+            seccountingTime = countingTime - this.state.recordTime;
+            secminute = Math.floor(seccountingTime/(60*1000));
+            secsecond = Math.floor((seccountingTime-6000*secminute)/1000);
+            secmilSecond = Math.floor((seccountingTime%1000)/10);
+            this.setState({
+                totalTime: (minute<10? "0"+minute:minute)+":"+(second<10? "0"+second:second)+"."+(milSecond<10? "0"+milSecond:milSecond),
+                sectionTime: (secminute<10? "0"+secminute:secminute)+":"+(secsecond<10? "0"+secsecond:secsecond)+"."+(secmilSecond<10? "0"+secmilSecond:secmilSecond),
+            });
+            if (this.state.stopWatch) {
+                this.setState({
+                    timeAccumulation: countingTime
+                });
+                clearInterval(interval)
+            }
+        }, 10);
     }
 
     stopWatch() {
-
+        this.setState({
+            stopWatch: true
+        });
     }
 
     addRecord() {
-
+        let {recordCounter, record} = this.state;
+        recordCounter++;
+        if (recordCounter<8) {
+            record.pop();
+        }
+        record.unshift({title:"计次"+recordCounter,time:this.state.sectionTime});
+        this.setState({
+            recordTime: this.state.timeAccumulation + this.state.currentTime - this.state.initialTime,
+            recordCounter: recordCounter,
+            record: record
+        });
     }
 
     clearRecord() {
-
+        this.state={
+            stopWatch: false,
+            resetWatch: true,
+            initialTime: 0,
+            currentTime: 0,
+            recordTime: 0,
+            timeAccumulation:0,
+            totalTime: "00:00.00",
+            sectionTime: "00:00.00",
+            recordCounter: 0,
+            record:[
+                {title:"",time:""},
+                {title:"",time:""},
+                {title:"",time:""},
+                {title:"",time:""},
+                {title:"",time:""},
+                {title:"",time:""},
+                {title:"",time:""}
+            ]
+        };
     }
 }
 
@@ -119,7 +204,44 @@ class WatchControl extends Component {
     }
 
     addRecord() {
+        if (this.watchOn) {
+            this.props.addRecord();
+        } else {
+            this.props.clearRecord();
+            this.setState({
+                stopBtnText: '计次',
+                stopTextColor: '#c0c0c0'
+            });
+        }
+    }
+}
 
+class WatchRecord extends Component{
+    static propTypes = {
+        record: React.PropTypes.array.isRequired,
+    };
+
+    render() {
+        let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
+            theDataSource = ds.cloneWithRows(this.props.record);
+        return (
+            <ListView
+                style={styles.recordList}
+                dataSource={theDataSource}
+                renderRow={this.renderRecord}
+            />
+        );
+    }
+
+    renderRecord(record) {
+        return(
+            <View style={styles.recordItem}>
+                <Text style={styles.recordItemTitle}>{record.title}</Text>
+                <View style={{alignItems: "center"}}>
+                    <Text style={styles.recordItemTime}>{record.time}</Text>
+                </View>
+            </View>
+        );
     }
 }
 
@@ -165,8 +287,34 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent:"center"
     },
+    recordList:{
+        width: Util.size.width,
+        height: Util.size.height - 350,
+        paddingLeft: 15,
+    },
     btnStartStopText:{
         fontSize:14,
         backgroundColor:"transparent"
     },
+    recordItem:{
+        height: 40,
+        borderBottomWidth:Util.pixel,borderBottomColor:"#bbb",
+        paddingTop: 5, paddingLeft: 10, paddingRight:10, paddingBottom:5,
+        flexDirection:"row",
+        alignItems:"center"
+    },
+    recordItemTitle:{
+        backgroundColor:"transparent",
+        flex:1,
+        textAlign:"left",
+        paddingLeft:20,
+        color:"#777"
+    },
+    recordItemTime:{
+        backgroundColor:"transparent",
+        flex:1,
+        textAlign:"right",
+        paddingRight:20,
+        color:"#222"
+    }
 });
