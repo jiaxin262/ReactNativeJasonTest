@@ -2,6 +2,7 @@
  * Created by xin.jia
  * since 2016/7/13
  */
+'use strict';
 import React, {Component} from 'react';
 import {
     View,

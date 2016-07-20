@@ -2,6 +2,7 @@
  * Created by xin.jia
  * since 2016/7/12
  */
+'use strict';
 import React, {Component} from 'react';
 import {
     View,
@@ -27,18 +28,18 @@ export default class MainPage extends Component {
         this.state = {
             days:[{
                 key: 0,
-                title: "A stopwatch",
+                title: "MovieList",
                 component: MovieList,
-                icon: "ios-add",
+                icon: "ios-film-outline",
                 size: 110,
                 color: "#ffbadd",
                 bgColor: COLORS[0],
                 hideNav: false
             },{
                 key:1,
-                title:"A weather app",
+                title:"NavigationParam",
                 component: NavigationParamTest,
-                icon: "ios-add-circle",
+                icon: "md-attach",
                 size:110,
                 color:"#ffbaca",
                 bgColor: COLORS[1],
@@ -138,7 +139,7 @@ export default class MainPage extends Component {
                                     underlayColor="#ac2323"  onPress={() => onThis.jumpToDay(elem)}>
                     <View style={styles.boxContainer}>
                         <Icon size={elem.size} name={elem.icon} color={elem.color}></Icon>
-                        <Text style={styles.boxText}>Day{index+1}</Text>
+                        <Text style={styles.boxText}>{elem.title}</Text>
                     </View>
                 </TouchableHighlight>
             );
