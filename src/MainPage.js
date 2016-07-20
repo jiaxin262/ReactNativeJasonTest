@@ -14,9 +14,10 @@ import {
     ScrollView
 } from 'react-native';
 import Util from './util/utils';
-import MovieList from './view/MovieList';
 import Icon from 'react-native-vector-icons/Ionicons';
+import MovieList from './view/MovieList';
 import NavigationParamTest from './view/NavigationParamTest';
+import StopWatch from './view/StopWatch';
 
 var COLORS = [
     '#F0FFa0','#BBFFFF','#F0FFF0','#90EE90','#B0E0E6','#EEEED1','#F5DEB3','#30Ea9a','#87CEFF','#AB82FF'
@@ -46,9 +47,9 @@ export default class MainPage extends Component {
                 hideNav: true
             },{
                 key: 2,
-                title: "A stopwatch",
-                component: MovieList,
-                icon: "ios-add-circle-outline",
+                title: "Stopwatch",
+                component: StopWatch,
+                icon: "ios-stopwatch-outline",
                 size: 110,
                 color: "#ffbaba",
                 bgColor: COLORS[2],
