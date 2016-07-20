@@ -13,10 +13,10 @@ import {
     Image,
     ScrollView
 } from 'react-native';
-import Util from './utils';
-import MovieList from './MovieList';
+import Util from './util/utils';
+import MovieList from './view/MovieList';
 import Icon from 'react-native-vector-icons/Ionicons';
-import NavigationParamTest from './NavigationParamTest';
+import NavigationParamTest from './view/NavigationParamTest';
 
 var COLORS = [
     '#F0FFa0','#BBFFFF','#F0FFF0','#90EE90','#B0E0E6','#EEEED1','#F5DEB3','#30Ea9a','#87CEFF','#AB82FF'
@@ -136,7 +136,7 @@ export default class MainPage extends Component {
         var boxs = this.state.days.map(function (elem, index) {
             return(
                 <TouchableHighlight key={elem.key} style={[styles.touchBox, {backgroundColor:elem.bgColor}]}
-                                    underlayColor="#ac2323"  onPress={() => onThis.jumpToDay(elem)}>
+                                    underlayColor="#E8E8E8"  onPress={() => onThis.jumpToDay(elem)}>
                     <View style={styles.boxContainer}>
                         <Icon size={elem.size} name={elem.icon} color={elem.color}></Icon>
                         <Text style={styles.boxText}>{elem.title}</Text>
