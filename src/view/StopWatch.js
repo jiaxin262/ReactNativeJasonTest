@@ -26,16 +26,13 @@ export default class StopWatch extends Component {
             totalTime: "00:00.00",
             sectionTime: "00:00.00",
             recordCounter: 0,
-            record:[
-                {title:"",time:""},
-                {title:"",time:""},
-                {title:"",time:""},
-                {title:"",time:""},
-                {title:"",time:""},
-                {title:"",time:""},
-                {title:"",time:""}
-            ]
+            record: []
         };
+    }
+
+    componentWillUnmount() {
+        this.stopWatch();
+        this.clearRecord();
     }
 
     render() {
@@ -56,12 +53,12 @@ export default class StopWatch extends Component {
                 resetWatch: false,
                 timeAccumulation:0,
                 initialTime: (new Date()).getTime()
-            })
+            });
         }else{
             this.setState({
                 stopWatch: false,
                 initialTime: (new Date()).getTime()
-            })
+            });
         }
         let milSecond, second, minute, countingTime,
             secmilSecond, secsecond, secminute, seccountingTime;
@@ -69,25 +66,27 @@ export default class StopWatch extends Component {
             this.setState({
                 currentTime: (new Date()).getTime()
             });
-            countingTime = this.state.currentTime - this.state.initialTime;
+            countingTime = this.state.timeAccumulation + this.state.currentTime - this.state.initialTime;
             minute = Math.floor(countingTime/1000/60);
-            second = Math.floor((countingTime - minute*6000)/1000);
+            second = Math.floor((countingTime - minute*60000)/1000);
             milSecond = Math.floor(countingTime%1000/10);
             seccountingTime = countingTime - this.state.recordTime;
             secminute = Math.floor(seccountingTime/(60*1000));
-            secsecond = Math.floor((seccountingTime-6000*secminute)/1000);
+            secsecond = Math.floor((seccountingTime-60000*secminute)/1000);
             secmilSecond = Math.floor((seccountingTime%1000)/10);
             this.setState({
-                totalTime: (minute<10? "0"+minute:minute)+":"+(second<10? "0"+second:second)+"."+(milSecond<10? "0"+milSecond:milSecond),
-                sectionTime: (secminute<10? "0"+secminute:secminute)+":"+(secsecond<10? "0"+secsecond:secsecond)+"."+(secmilSecond<10? "0"+secmilSecond:secmilSecond),
+                totalTime: (minute<10? "0"+minute:minute)+":"+ (second<10? "0"+second:second)+"."+
+                    (milSecond<10? "0"+milSecond:milSecond),
+                sectionTime: (secminute<10? "0"+secminute:secminute)+":"+(secsecond<10? "0"+secsecond:secsecond)+"."+
+                    (secmilSecond<10? "0"+secmilSecond:secmilSecond)
             });
             if (this.state.stopWatch) {
                 this.setState({
-                    timeAccumulation: countingTime
+                    timeAccumulation: countingTime,
                 });
                 clearInterval(interval)
             }
-        }, 10);
+        }, 100);
     }
 
     stopWatch() {
@@ -99,10 +98,7 @@ export default class StopWatch extends Component {
     addRecord() {
         let {recordCounter, record} = this.state;
         recordCounter++;
-        if (recordCounter<8) {
-            record.pop();
-        }
-        record.unshift({title:"计次"+recordCounter,time:this.state.sectionTime});
+        record.unshift({title:"计次"+recordCounter, sectionTime: this.state.sectionTime, time:this.state.totalTime});
         this.setState({
             recordTime: this.state.timeAccumulation + this.state.currentTime - this.state.initialTime,
             recordCounter: recordCounter,
@@ -111,7 +107,7 @@ export default class StopWatch extends Component {
     }
 
     clearRecord() {
-        this.state={
+        this.setState({
             stopWatch: false,
             resetWatch: true,
             initialTime: 0,
@@ -121,16 +117,8 @@ export default class StopWatch extends Component {
             totalTime: "00:00.00",
             sectionTime: "00:00.00",
             recordCounter: 0,
-            record:[
-                {title:"",time:""},
-                {title:"",time:""},
-                {title:"",time:""},
-                {title:"",time:""},
-                {title:"",time:""},
-                {title:"",time:""},
-                {title:"",time:""}
-            ]
-        };
+            record: []
+        });
     }
 }
 
@@ -162,8 +150,8 @@ class WatchControl extends Component {
         super(props);
         this.watchOn = false;
         this.state = {
-            startBtnText: '开始',
-            stopBtnText: '计次',
+            startBtnText: '开 始',
+            stopBtnText: '计 次',
             startTextColor: '#606060',
             stopTextColor: '#c0c0c0'
         };
@@ -187,16 +175,16 @@ class WatchControl extends Component {
         if (this.watchOn) {
             this.props.startWatch();
             this.setState({
-                startBtnText: '停止',
-                stopBtnText: '计次',
+                startBtnText: '停 止',
+                stopBtnText: '计 次',
                 startTextColor: '#cc0000',
                 stopTextColor: '#606060'
             });
         } else {
             this.props.stopWatch();
             this.setState({
-                startBtnText: '开始',
-                stopBtnText: '复位',
+                startBtnText: '开 始',
+                stopBtnText: '复 位',
                 startTextColor: '#606060',
                 stopTextColor: '#66cc00'
             });
@@ -209,7 +197,7 @@ class WatchControl extends Component {
         } else {
             this.props.clearRecord();
             this.setState({
-                stopBtnText: '计次',
+                stopBtnText: '计 次',
                 stopTextColor: '#c0c0c0'
             });
         }
@@ -218,18 +206,25 @@ class WatchControl extends Component {
 
 class WatchRecord extends Component{
     static propTypes = {
-        record: React.PropTypes.array.isRequired,
+        record: React.PropTypes.array.isRequired
     };
 
     render() {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
             theDataSource = ds.cloneWithRows(this.props.record);
         return (
-            <ListView
-                style={styles.recordList}
-                dataSource={theDataSource}
-                renderRow={this.renderRecord}
-            />
+            <View style={styles.recordList}>
+                <View style={styles.recordItem}>
+                    <Text style={styles.recordItemTitle}>count</Text>
+                    <Text style={[styles.recordItemTime,{textAlign:'center'}]}>sectionTime</Text>
+                    <Text style={styles.recordItemTime}>totalTime </Text>
+                </View>
+                <ListView
+                    dataSource={theDataSource}
+                    renderRow={this.renderRecord}
+                    enableEmptySections={true}
+                />
+            </View>
         );
     }
 
@@ -237,9 +232,8 @@ class WatchRecord extends Component{
         return(
             <View style={styles.recordItem}>
                 <Text style={styles.recordItemTitle}>{record.title}</Text>
-                <View style={{alignItems: "center"}}>
-                    <Text style={styles.recordItemTime}>{record.time}</Text>
-                </View>
+                <Text style={[styles.recordItemTime,{textAlign:'center'}]}>{record.sectionTime}</Text>
+                <Text style={styles.recordItemTime}>{record.time}</Text>
             </View>
         );
     }
@@ -291,6 +285,7 @@ const styles = StyleSheet.create({
         width: Util.size.width,
         height: Util.size.height - 350,
         paddingLeft: 15,
+        paddingRight: 15
     },
     btnStartStopText:{
         fontSize:14,
@@ -304,17 +299,13 @@ const styles = StyleSheet.create({
         alignItems:"center"
     },
     recordItemTitle:{
-        backgroundColor:"transparent",
         flex:1,
         textAlign:"left",
-        paddingLeft:20,
         color:"#777"
     },
     recordItemTime:{
-        backgroundColor:"transparent",
         flex:1,
         textAlign:"right",
-        paddingRight:20,
         color:"#222"
     }
 });
