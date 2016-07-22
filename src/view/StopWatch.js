@@ -98,6 +98,9 @@ export default class StopWatch extends Component {
     addRecord() {
         let {recordCounter, record} = this.state;
         recordCounter++;
+        if(recordCounter > 8) {
+            record.pop();
+        }
         record.unshift({title:"计次"+recordCounter, sectionTime: this.state.sectionTime, time:this.state.totalTime});
         this.setState({
             recordTime: this.state.timeAccumulation + this.state.currentTime - this.state.initialTime,
