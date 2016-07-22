@@ -18,6 +18,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import MovieList from './view/MovieList';
 import NavigationParamTest from './view/NavigationParamTest';
 import StopWatch from './view/StopWatch';
+import WeatherApp from './view/WeatherApp';
 
 var COLORS = [
     '#F0FFa0','#BBFFFF','#F0FFF0','#90EE90','#B0E0E6','#EEEED1','#F5DEB3','#30Ea9a','#87CEFF','#AB82FF'
@@ -56,9 +57,9 @@ export default class MainPage extends Component {
                 hideNav: false
             },{
                 key:3,
-                title:"A weather app",
-                component: NavigationParamTest,
-                icon: "ios-add-outline",
+                title:"WeatherApp",
+                component: WeatherApp,
+                icon: "ios-cloudy-outline",
                 size:110,
                 color:"#ffbaba",
                 bgColor: COLORS[3],
