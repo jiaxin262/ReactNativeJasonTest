@@ -86,7 +86,7 @@ export default class StopWatch extends Component {
                 });
                 clearInterval(interval)
             }
-        }, 30);
+        }, 100);
     }
 
     stopWatch() {
