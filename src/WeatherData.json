@@ -1,5 +1,5 @@
 {"weatherData":[
-  { "key":0, "city":"798f5dde", "night":true,"bg":"https://github.com/jiaxin262/ReactNativeJasonTest/blob/jason_practice/src/img/w2.png", "abs":"592790e866746717", "degree":15,
+  { "key":0, "city":"798f5dde", "night":true,"bg":"http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E8%83%8C%E6%99%AF&pn=15&spn=0&di=178858443280&pi=&rn=1&tn=baiduimagedetail&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=29522808%2C503091122&os=2070144393%2C4148096126&simid=0%2C0&adpicid=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F121009%2F235045-12100Z3100185.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bpw5rtv_z%26e3Bv54AzdH3Fp7h7AzdH3Fda8d8aAzdH3Fdnbmdc_z%26e3Bip4s&gsm=0", "abs":"592790e866746717", "degree":15,
     "today":{"week":"661f671f516d", "day":"4eca5929", "high":16,"low":14},
     "hours":[
       { "key":101, "time":"73b05728", "icon":"ios-moon", "degree":15,"color":"rgba(255,255,255,1)"
