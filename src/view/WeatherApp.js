@@ -15,7 +15,7 @@ import Util from '../util/utils';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-swiper';
 
-var weatherDataUrl = "https://github.com/jiaxin262/ReactNativeJasonTest/blob/jason_practice/src/WeatherData.json";
+var weatherDataUrl = "https://raw.githubusercontent.com/jiaxin262/ReactNativeJasonTest/jason_practice/src/WeatherData.json";
 
 export default class WeatherApp extends Component{
     constructor(props) {
@@ -102,7 +102,7 @@ class Weather extends Component{
 
             return (
                 <View key={elem.key}>
-                    <Image style={styles.image} source={elem.bg}></Image>
+                    <Image style={styles.image} source={{uri:elem.bg}}></Image>
                     <ScrollView style={styles.pageContainer}  showsVerticalScrollIndicator={false}>
                         <View style={styles.headInfo}>
                             <Text style={styles.city}>{elem.city}</Text>
