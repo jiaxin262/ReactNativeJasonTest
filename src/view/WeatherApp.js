@@ -15,16 +15,51 @@ import Util from '../util/utils';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-swiper';
 
-var weatherDataUrl = "";
-
+var weatherDataUrl = "https://github.com/jiaxin262/ReactNativeJasonTest/blob/jason_practice/src/WeatherData.json";
 
 export default class WeatherApp extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            weatherData: null,  //这里放自定义的state变量及初始值
+            loaded: false,
+        };
+        this.fetchDatas = this.fetchData.bind(this);
+    }
+
+    componentDidMount() {
+        this.fetchData();
+    }
+
     render() {
+        if (!this.state.loaded) {
+            return this.renderLoadingView();
+        }
         return(
             <View style={styles.weatherContainer}>
-                <Weather></Weather>
+                <Weather weatherData={this.state.weatherData}></Weather>
             </View>
         )
+    }
+
+    fetchData() {
+        fetch(weatherDataUrl)
+            .then((response) => response.json())
+            .then((responseData) => {
+                this.setState({
+                    weatherData: responseData.weatherData,
+                    loaded: true
+                });
+            })
+            .done();
+    }
+
+    renderLoadingView() {
+        return (
+            <View style={styles.container}>
+                <Text>正在加载天气数据...</Text>
+            </View>
+        );
     }
 }
 
@@ -32,7 +67,7 @@ class Weather extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            weather: weatherData,
+            weather: this.props.weatherData,
         }
     }
 
@@ -174,6 +209,13 @@ class Weather extends Component{
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+        backgroundColor: '#F0FFFF'
+    },
     pageContainer:{
         backgroundColor:"transparent",
         position: "absolute",
