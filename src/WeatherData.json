@@ -1,5 +1,5 @@
 {"weatherData":[
-  { "key":0, "city":"\u798f\u5dde", "night":!0,"bg":"require"("../img/w2.png"), "abs":"\u5927\u90e8\u6674\u6717", "degree":15,
+  { "key":0, "city":"\u798f\u5dde", "night":true,"bg":"require('../img/w2.png')", "abs":"\u5927\u90e8\u6674\u6717", "degree":15,
     "today":{"week":"\u661f\u671f\u516d", "day":"\u4eca\u5929", "high":16,"low":14},
     "hours":[
       { "key":101, "time":"\u73b0\u5728", "icon":"ios-moon", "degree":"15\xb0", "color":"rgba(255,255,255,1)"
@@ -31,7 +31,7 @@
       },{"key":127,"time":"2\u65f6","icon":"ios-cloudy","degree":"17\xb0","color":"rgba(255,255,255,0.8)"
       }
     ],
-    "day"s:[
+    "days":[
       {"key":21,"day":"\u661f\u671f\u4e00","icon":"ios-partly-sunny","high":21,"low":16
       },{"key":22,"day":"\u661f\u671f\u4e8c","icon":"ios-rainy","high":22,"low":14
       },{"key":23,"day":"\u661f\u671f\u4e09","icon":"ios-rainy","high":21,"low":11
@@ -47,7 +47,7 @@
     "rise":"06:21","down":"18:06","prop":"10%","humi":"94%","dir":"\u4e1c\u5317\u504f\u5317","speed":"3\u5343\u7c73\uff0f\u5c0f\u65f6",
     "feel":"15\xb0","rain":"0.0 \u5398\u7c73","pres":"1,016 \u767e\u5e15","sight":"5.0 \u516c\u91cc","uv":"0"
   }, {
-  "key":1,"city":"\u5361\u5c14\u52a0\u91cc","night":!1,"bg":"require"("../img/w3.png"),"abs":"\u5927\u90e8\u6674\u6717","degree":15,
+  "key":1,"city":"\u5361\u5c14\u52a0\u91cc","night":false,"bg":"require('../img/w3.png')","abs":"\u5927\u90e8\u6674\u6717","degree":15,
   "today":{"week":"\u661f\u671f\u516d","day":"\u4eca\u5929","high":16,"low":14},
   "hours":[
     {"key":101,"time":"\u73b0\u5728","icon":"ios-moon","degree":"15\xb0","color":"rgba(255,255,255,1)"
@@ -79,7 +79,7 @@
     },{"key":127,"time":"2\u65f6","icon":"ios-cloudy","degree":"17\xb0","color":"rgba(255,255,255,0.8)"
     }
   ],
-  "day"s:[
+  "days":[
     {"key":21,"day":"\u661f\u671f\u4e00","icon":"ios-partly-sunny","high":21,"low":16
     },{"key":22,"day":"\u661f\u671f\u4e8c","icon":"ios-rainy","high":22,"low":14
     },{"key":23,"day":"\u661f\u671f\u4e09","icon":"ios-rainy","high":21,"low":11
