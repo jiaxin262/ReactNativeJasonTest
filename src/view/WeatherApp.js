@@ -102,7 +102,7 @@ class Weather extends Component{
 
             return (
                 <View key={elem.key}>
-                    <Image style={styles.image} source={require("../img/w3.png")}/>
+                    <Image style={styles.image} source={{uri: elem.bg}}/>
                     <ScrollView style={styles.pageContainer}  showsVerticalScrollIndicator={false}>
                         <View style={styles.headInfo}>
                             <Text style={styles.city}>{elem.city}</Text>
@@ -447,5 +447,11 @@ const styles = StyleSheet.create({
         width: 6, height: 6,
         borderRadius: 3,
         marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3
+    },
+    image:{
+        width: Util.size.width,
+        height: Util.size.height,
+        flex: 1,
+        alignSelf: 'stretch'
     }
 });

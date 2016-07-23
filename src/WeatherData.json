@@ -1,5 +1,5 @@
 {"weatherData":[
-  { "key":0, "city":"798f5dde", "night":true,"bg":"http://resizing.flixster.com/m7G-weBZPYfnoqSiF59LIPPYOuM=/44x81/dkpu1ddg7pbsk.cloudfront.net/movie/10/97/47/10974721_ori.jpg", "abs":"592790e866746717", "degree":15,
+  { "key":0, "city":"798f5dde", "night":true,"bg":"https://github.com/jiaxin262/ReactNativeJasonTest/blob/jason_practice/src/img/w3.png", "abs":"592790e866746717", "degree":15,
     "today":{"week":"661f671f516d", "day":"4eca5929", "high":16,"low":14},
     "hours":[
       { "key":101, "time":"73b05728", "icon":"ios-moon", "degree":15,"color":"rgba(255,255,255,1)"
@@ -47,7 +47,7 @@
     "rise":"06:21","down":"18:06","prop":"10%","humi":"94%","dir":"4e1c5317504f5317","speed":"353437c73ff0f5c0f65f6",
     "feel":15,"rain":"0.0 53987c73","pres":"1,016 767e5e15","sight":"5.0 516c91cc","uv":"0"
   }, {
-  "key":1,"city":"53615c1452a091cc","night":false,"bg":"https://github.com/jiaxin262/ReactNativeJasonTest/blob/jason_practice/src/img/w3.png","abs":"592790e866746717","degree":15,
+  "key":1,"city":"53615c1452a091cc","night":false,"bg":"https://github.com/jiaxin262/ReactNativeJasonTest/blob/jason_practice/src/img/w5.png","abs":"592790e866746717","degree":15,
   "today":{"week":"661f671f516d","day":"4eca5929","high":16,"low":14},
   "hours":[
     {"key":101,"time":"73b05728","icon":"ios-moon","degree":15,"color":"rgba(255,255,255,1)"

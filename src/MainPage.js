@@ -221,10 +221,5 @@ const styles = StyleSheet.create({
         width: Util.size.width,
         textAlign:"center",
         fontSize: 12
-    },
-    image:{
-        width: Util.size.width,
-        flex: 1,
-        alignSelf: 'stretch',
     }
 });
