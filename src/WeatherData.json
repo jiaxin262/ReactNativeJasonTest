@@ -47,7 +47,7 @@
     "rise":"06:21","down":"18:06","prop":"10%","humi":"94%","dir":"4e1c5317504f5317","speed":"353437c73ff0f5c0f65f6",
     "feel":15,"rain":"0.0 53987c73","pres":"1,016 767e5e15","sight":"5.0 516c91cc","uv":"0"
   }, {
-  "key":1,"city":"53615c1452a091cc","night":false,"bg":"https://github.com/jiaxin262/ReactNativeJasonTest/blob/jason_practice/src/img/w5.png","abs":"592790e866746717","degree":15,
+  "key":1,"city":"53615c1452a091cc","night":false,"bg":"http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%A4%A9%E6%B0%94&step_word=&pn=13&spn=0&di=179276098210&pi=&rn=1&tn=baiduimagedetail&is=&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=3783092501%2C2737974942&os=2881490787%2C3659510898&simid=3496038804%2C394576705&adpicid=0&ln=1000&fr=&fmq=1469274380840_R&fm=&ic=undefined&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&ist=&jit=&cg=&bdtype=10&oriquery=&objurl=http%3A%2F%2Fthumbs.dreamstime.com%2Fz%2F%25CC%25EC%25C6%25F8-45495523.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fvg_z%26e3B16jw4fpt4j_z%26e3Bv54AzdH3F%25Ec%25BA%25ln%25Ec%25AD%25lb%25E9%25BE%25bB%25Eb%25AF%25b8-%25Ec%25A9%25Al%25Em%25Ba%25l9-t4w2j9c9lccdn&gsm=0&rpstart=0&rpnum=0","abs":"592790e866746717","degree":15,
   "today":{"week":"661f671f516d","day":"4eca5929","high":16,"low":14},
   "hours":[
     {"key":101,"time":"73b05728","icon":"ios-moon","degree":15,"color":"rgba(255,255,255,1)"
