@@ -102,7 +102,7 @@ class Weather extends Component{
 
             return (
                 <View key={elem.key}>
-                    <Image style={styles.image} source={{uri:elem.bg}}></Image>
+                    <Image style={styles.image} source={require("../img/w3.png")}/>
                     <ScrollView style={styles.pageContainer}  showsVerticalScrollIndicator={false}>
                         <View style={styles.headInfo}>
                             <Text style={styles.city}>{elem.city}</Text>
