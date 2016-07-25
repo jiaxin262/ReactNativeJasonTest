@@ -19,6 +19,7 @@ import MovieList from './view/MovieList';
 import NavigationParamTest from './view/NavigationParamTest';
 import StopWatch from './view/StopWatch';
 import WeatherApp from './view/WeatherApp';
+import SwiperTest from './view/SwiperTest';
 
 var COLORS = [
     '#F0FFa0','#BBFFFF','#F0FFF0','#90EE90','#B0E0E6','#EEEED1','#F5DEB3','#30Ea9a','#87CEFF','#AB82FF'
@@ -66,9 +67,9 @@ export default class MainPage extends Component {
                 hideNav: true
             },{
                 key: 4,
-                title: "A stopwatch",
-                component: MovieList,
-                icon: "ios-alarm",
+                title: "SwiperTest",
+                component: SwiperTest,
+                icon: "md-swap",
                 size: 110,
                 color: "#ffbaba",
                 bgColor: COLORS[4],
