@@ -101,15 +101,19 @@ export default class ListViewWithSH extends Component {
 
 const styles = StyleSheet.create({
     listViewHeader: {
+        justifyContent: 'center',
         paddingLeft: 20,
-        height: 90,
-        backgroundColor: '#99d1d3d4'
+        height: 50,
+        backgroundColor: '#99d1d3d4',
+        borderBottomWidth:Util.pixel,
+        borderBottomColor:"#bbb"
     },
     listViewItem: {
+        justifyContent: 'center',
         borderBottomWidth:Util.pixel,
         borderBottomColor:"#bbb",
         paddingLeft: 30,
-        height: 45,
+        height: 35,
         backgroundColor: '#f2f8fb'
     },
     headerText: {

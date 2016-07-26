@@ -92,7 +92,7 @@ export default class MainPage extends Component {
                 size: 110,
                 color: "#ffbaba",
                 bgColor: COLORS[6],
-                hideNav: false
+                hideNav: true
             },{
                 key:7,
                 title:"A weather app",
@@ -160,7 +160,8 @@ export default class MainPage extends Component {
     jumpToDay(elem) {
         this.props.navigator.push({
             title: elem.title,
-            component: elem.component
+            component: elem.component,
+            navigationBarHidden: elem.hideNav
         });
     }
 
