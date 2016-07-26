@@ -32,6 +32,15 @@ export default class MainPage extends Component {
         super(props);
         this.state = {
             days:[{
+                key: 6,
+                title: "ReduxTest",
+                component: ReduxTest,
+                icon: "md-infinite",
+                size: 110,
+                color: "#ffbaba",
+                bgColor: COLORS[6],
+                hideNav: true
+            },{
                 key: 0,
                 title: "MovieList",
                 component: MovieList,
@@ -84,15 +93,6 @@ export default class MainPage extends Component {
                 size:110,
                 color:"#ffbaba",
                 bgColor: COLORS[5],
-                hideNav: true
-            },{
-                key: 6,
-                title: "A stopwatch",
-                component: MovieList,
-                icon: "ios-albums",
-                size: 110,
-                color: "#ffbaba",
-                bgColor: COLORS[6],
                 hideNav: true
             },{
                 key:7,
