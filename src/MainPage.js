@@ -20,6 +20,7 @@ import NavigationParamTest from './view/NavigationParamTest';
 import StopWatch from './view/StopWatch';
 import WeatherApp from './view/WeatherApp';
 import SwiperTest from './view/SwiperTest';
+import ListViewWithSH from './view/ListViewWithSH';
 
 var COLORS = [
     '#F0FFa0','#BBFFFF','#F0FFF0','#90EE90','#B0E0E6','#EEEED1','#F5DEB3','#30Ea9a','#87CEFF','#AB82FF'
@@ -76,9 +77,9 @@ export default class MainPage extends Component {
                 hideNav: false
             },{
                 key:5,
-                title:"A weather app",
-                component: NavigationParamTest,
-                icon: "ios-alarm-outline",
+                title:"SectionHeaderLW",
+                component: ListViewWithSH,
+                icon: "ios-list",
                 size:110,
                 color:"#ffbaba",
                 bgColor: COLORS[5],
