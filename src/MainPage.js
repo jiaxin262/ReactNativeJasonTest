@@ -21,6 +21,7 @@ import StopWatch from './view/StopWatch';
 import WeatherApp from './view/WeatherApp';
 import SwiperTest from './view/SwiperTest';
 import ListViewWithSH from './view/ListViewWithSH';
+import ReduxTest from './view/ReduxTest';
 
 var COLORS = [
     '#F0FFa0','#BBFFFF','#F0FFF0','#90EE90','#B0E0E6','#EEEED1','#F5DEB3','#30Ea9a','#87CEFF','#AB82FF'
