@@ -83,23 +83,23 @@ export default class ListViewWithSH extends Component {
 
     renderFoodRow(foodItem) {
         return(
-            <View style={styles.listViewItem}>
-                <Text style={styles.itemText}>{foodItem.name}</Text>
+            <View style={listStyles.listViewItem}>
+                <Text style={listStyles.itemText}>{foodItem.name}</Text>
             </View>
         );
     }
 
     renderFoodHeader(sectionData, category) {
         return(
-            <View style={styles.listViewHeader}>
-                <Text style={styles.headerText}>{category}</Text>
+            <View style={listStyles.listViewHeader}>
+                <Text style={listStyles.headerText}>{category}</Text>
             </View>
         );
     }
 
 }
 
-const styles = StyleSheet.create({
+export const listStyles = StyleSheet.create({
     listViewHeader: {
         justifyContent: 'center',
         paddingLeft: 20,

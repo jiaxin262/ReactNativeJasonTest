@@ -32,6 +32,15 @@ export default class MainPage extends Component {
         super(props);
         this.state = {
             days:[{
+                key:7,
+                title:"A weather app",
+                component: NavigationParamTest,
+                icon: "ios-albums-outline",
+                size:110,
+                color:"#ffbaba",
+                bgColor: COLORS[7],
+                hideNav: true
+            },{
                 key: 6,
                 title: "ReduxTest",
                 component: ReduxTest,
@@ -93,15 +102,6 @@ export default class MainPage extends Component {
                 size:110,
                 color:"#ffbaba",
                 bgColor: COLORS[5],
-                hideNav: true
-            },{
-                key:7,
-                title:"A weather app",
-                component: NavigationParamTest,
-                icon: "ios-albums-outline",
-                size:110,
-                color:"#ffbaba",
-                bgColor: COLORS[7],
                 hideNav: true
             },{
                 key: 8,
